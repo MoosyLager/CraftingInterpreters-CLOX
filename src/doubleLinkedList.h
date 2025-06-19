@@ -1,10 +1,10 @@
 #ifndef DOUBLE_LINKED_LIST_H
 #define DOUBLE_LINKED_LIST_H
 
-typedef struct {
+typedef struct DoublyLinkedNode {
     int data;
-    DoublyLinkedNode* next;
-    DoublyLinkedNode* prev;
+    struct DoublyLinkedNode* next;
+    struct DoublyLinkedNode* prev;
 } DoublyLinkedNode;
 
 typedef struct {
