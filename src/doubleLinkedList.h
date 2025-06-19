@@ -3,13 +3,13 @@
 
 typedef struct {
     int data;
-    struct DoublyLinkedNode* next;
-    struct DoublyLinkedNode* prev;
+    DoublyLinkedNode* next;
+    DoublyLinkedNode* prev;
 } DoublyLinkedNode;
 
 typedef struct {
-    struct DoublyLinkedNode* head;
-    struct DoublyLinkedNode* tail;
+    DoublyLinkedNode* head;
+    DoublyLinkedNode* tail;
 } DoublyLinkedList;
 
 void InsertAfterNode(DoublyLinkedList* list, DoublyLinkedNode* node, DoublyLinkedNode* newNode);
