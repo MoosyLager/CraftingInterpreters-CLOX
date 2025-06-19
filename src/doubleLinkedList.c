@@ -32,6 +32,15 @@ void InsertAfterNode(DoublyLinkedList *list, DoublyLinkedNode *node, DoublyLinke
  */
 void InsertBeforeNode(DoublyLinkedList *list, DoublyLinkedNode *node, DoublyLinkedNode *newNode)
 {
+    newNode->next = node;
+    if ( node->next == NULL ) {
+        newNode->next = NULL;
+        list->tail = newNode;
+    } else {
+        newNode->prev = node->prev;
+        node->prev->next = newNode;
+    }
+    node->prev = newNode;
 }
 
 /**
@@ -41,6 +50,14 @@ void InsertBeforeNode(DoublyLinkedList *list, DoublyLinkedNode *node, DoublyLink
  */
 void InsertAtHead(DoublyLinkedList *list, DoublyLinkedNode *newNode)
 {
+    if ( list->head == NULL ) {
+        list->head = newNode;
+        list->tail = newNode;
+        newNode->prev = NULL;
+        newNode->next = NULL;
+    } else {
+        InsertBeforeNode(list, list->head, newNode);
+    }
 }
 
 /**
@@ -50,6 +67,11 @@ void InsertAtHead(DoublyLinkedList *list, DoublyLinkedNode *newNode)
  */
 void InsertAtTail(DoublyLinkedList *list, DoublyLinkedNode *newNode)
 {
+    if ( list->tail == NULL ) {
+        InsertAtHead(list, newNode);
+    } else {
+        InsertAfterNode(list, list->tail, newNode);
+    }
 }
 
 /**
@@ -59,4 +81,16 @@ void InsertAtTail(DoublyLinkedList *list, DoublyLinkedNode *newNode)
  */
 void DeleteNode(DoublyLinkedList *list, DoublyLinkedNode *node)
 {
+    if ( node->prev = NULL ) {
+        list->head = node->next;
+    } else {
+        node->prev->next = node->next;
+    }
+    if ( node->next == NULL ) {
+        list->tail = node->prev;
+    } else {
+        node->next->prev = node->prev;
+    }
+
+    free(node);
 }
