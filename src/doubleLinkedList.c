@@ -9,6 +9,19 @@
  */
 void InsertAfterNode(DoublyLinkedList *list, DoublyLinkedNode *node, DoublyLinkedNode *newNode)
 {
+    if ( node == NULL || newNode == NULL ) {
+        return;
+    }
+
+    newNode->prev = node;
+    if ( node->next == NULL ) {
+        newNode->next = NULL;
+        list->tail = newNode;
+    } else {
+        newNode->next = node->next;
+        node->next->prev = newNode;
+    }
+    node->next = newNode;
 }
 
 /**
